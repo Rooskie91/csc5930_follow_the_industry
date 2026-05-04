@@ -9,6 +9,8 @@ Lobbying-contribution network analysis:
 
 ## Project Descritpion
 
+### NOTE: OpenSecrets ToS restricts me from republishing their data. Data is available upon request. 
+
 A network science analysis of U.S. campaign-finance flows for CSC 5930 - 002 
 (Network Science). Industries are linked to federal legislators via
 PAC contributions from the 2022 cycle (117th Congress), and the
