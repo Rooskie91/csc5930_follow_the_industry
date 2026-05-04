@@ -63,3 +63,29 @@ FOLLOW_THE_INDUSTRY/
 - **Party assortativity**: r = 0.23
 - **Ideology assortativity (DW-NOMINATE)**: r = 0.23
 - **Degree assortativity**: r = -0.28
+
+## AI Usage Disclosure (Course: CSC 5930 — Network Science)
+
+**Tool(s) used:** Claude (Anthropic)
+
+**Purpose:**
+- Translating the OpenSecrets bulk-data schema into a working pandas loader (column names, quoting conventions, filter rules from the User's Guide)
+- Debugging Python errors during development (missing return statement, scipy.stats.moment central-vs-raw second moment bug, pandas KeyError on a renamed column)
+- Drafting the synthetic-data generator used for end-to-end pipeline testing before real OpenSecrets data was downloaded.
+- Writing setup instructions (VS Code + Jupyter without virtualenv, GitHub publishing workflow)
+
+**Sample prompts:**
+- "Give me specific instructions on how to get the required data for the 117th congress from OpenSecrets."
+- "I get this error: TypeError: cannot unpack non-iterable NoneType object — what's wrong? Give me step by step indsturciton on how to fix it and explain the process to me."
+- "Is there anything wrong with this part of my helper code? I'm getting weird results when I run this..."
+- "Can you debug the code that will generate centrality.png?"
+- "The little white box that displays gamma shows up behind the legend. Give me specific instructions on how to make that show up in the middle? Don't write code, only explain how to fix this problem."
+
+**Verification:**
+- Every code block produced by the AI was run end-to-end in my own VS Code/Jupyter environment against the real OpenSecrets data; only code that produced sensible, replicable outputs was kept.
+- Numerical claims (power-law exponent γ ≈ 2.89, party assortativity r = 0.23, $496.5M total contribution dollars, 98% community-party purity) were verified by inspecting the notebook outputs directly rather than trusting figures cited in conversation.
+- The OpenSecrets User's Guide filter rules (drop `Z9*`/`Z4*` `RealCode` values, keep only `DI = 'D'`) were independently confirmed against the official OpenSecrets data documentation before being added to the pipeline.
+- One AI-suggested implementation was identified as incorrect and rewritten: the `scipy.stats.moment(degrees, 2)` call returned the *central* second moment (variance) rather than the raw `<k²>` needed by the epidemic-threshold formula `λ_c = <k>/<k²>`. Replaced with `np.mean(degrees**2)` after verifying the issue numerically.
+- All interpretive claims about the network (e.g., that party-aligned community structure mirrors the donor-class echo chamber observed in political-science literature) are my own.
+
+**Authorship:** I confirm the submitted work reflects my own understanding and writing.
