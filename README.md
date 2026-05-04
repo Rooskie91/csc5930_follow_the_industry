@@ -43,10 +43,6 @@ FOLLOW_THE_INDUSTRY/
         pacs20.txt                           -> OpenSecrets: Campaign Finance Data, 2020 Cycle Tables
         pacs22.txt                           -> OpenSecrets: Campaign Finance Data, 2022 Cycle Tables
 
-## Create Vitrual Envionment
-
-    python -m venv .venv
-
 ## Get Dependencies
 
     pip install jupyter notebook ipykernel networkx pandas matplotlib numpy scipy pyyaml powerlaw openpyxl
