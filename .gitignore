@@ -1,0 +1,15 @@
+# Data files (not redistributable per OpenSecrets ToS)
+data/
+
+# Generated graph files (regenerate by running notebook 1)
+*.gexf
+
+# Python cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
